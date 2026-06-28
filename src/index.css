@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0.7; }
+}
+
+@keyframes drift {
+  0% { transform: translateX(-15%); }
+  100% { transform: translateX(115%); }
+}
+
+@keyframes flash {
+  0%, 90%, 100% { opacity: 0; }
+  92%, 94% { opacity: 0.9; }
+}
+
+@keyframes snowfall {
+  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh) translateX(30px); opacity: 0.9; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.15); }
+}
+
+.raindrop {
+  position: absolute;
+  top: -10vh;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.6));
+  animation: fall linear infinite;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10vh;
+  border-radius: 50%;
+  background: white;
+  animation: snowfall linear infinite;
+}
+
+.cloud-shape {
+  position: absolute;
+  background: rgba(255,255,255,0.25);
+  border-radius: 100px;
+  filter: blur(2px);
+  animation: drift linear infinite;
+}
+
+.sun-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,220,120,0.9), rgba(255,180,50,0));
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.lightning-flash {
+  position: absolute;
+  inset: 0;
+  background: white;
+  animation: flash 6s infinite;
+}
